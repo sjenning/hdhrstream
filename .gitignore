@@ -1,0 +1,9 @@
+.deps/
+Makefile
+autom4te.cache/
+config.h
+config.log
+config.status
+hdhrstream
+*.o
+stamp-h1
