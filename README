@@ -1,4 +1,15 @@
 hdhrsteam
 
-A simple udp relay the repackages data received through the libhdhomerun
-library and forwards it as a UDP stream.
+A simple relay that repackages data received through the libhdhomerun
+library and forwards it as a UDP stream to a specific destination.
+
+Usage example:
+
+hdhrstream auto:7 192.168.0.1
+
+Tunes HDHomerun to channel 7 and begins streaming UDP data to the host
+at 192.168.0.1 on port 5000 (default)
+
+hdhrstream auto:7 192.168.0.1 3000
+
+Same as before except to port 3000, overriding default.
