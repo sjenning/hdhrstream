@@ -27,13 +27,18 @@ int main(int argc, char **argv)
 	struct sockaddr_in dst;
 	uint8_t *buf, *end;
 	struct sigaction sa;
+
+	if (argc != 2) {
+		printf("usage: %s channel\n", argv[0]);
+		return 1;
+	}
 	
 	hd = hdhomerun_device_create(HDHOMERUN_DEVICE_ID_WILDCARD, 0, 0, NULL);
 	if (!hd) {
 		printf("hdhomerun_device_create");
 	}
 
-	if (hdhomerun_device_set_tuner_channel(hd, "auto:7") != 1) {
+	if (hdhomerun_device_set_tuner_channel(hd, argv[1]) != 1) {
 		printf("hdhomerun_device_set_tuner_channel");
 		goto destroy;
 	}
