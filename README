@@ -1,0 +1,4 @@
+hdhrsteam
+
+A simple udp relay the repackages data received through the libhdhomerun
+library and forwards it as a UDP stream.

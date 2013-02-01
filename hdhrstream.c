@@ -27,10 +27,15 @@ int main(int argc, char **argv)
 	struct sockaddr_in dst;
 	uint8_t *buf, *end;
 	struct sigaction sa;
+	uint16_t port;
 
-	if (argc != 2) {
-		printf("usage: %s channel\n", argv[0]);
+	if (argc < 3 || argc > 4) {
+		printf("usage: %s channel dst [port]\n", argv[0]);
 		return 1;
+	}
+
+	if (argc == 4) {
+		port = atoi(argv[3]);
 	}
 	
 	hd = hdhomerun_device_create(HDHOMERUN_DEVICE_ID_WILDCARD, 0, 0, NULL);
@@ -65,7 +70,7 @@ int main(int argc, char **argv)
 
 	memset(&dst, 0, sizeof(dst));
 	dst.sin_family = AF_INET;
-	inet_pton(AF_INET, "192.168.1.173", &dst.sin_addr);
+	inet_pton(AF_INET, argv[2], &dst.sin_addr);
 	dst.sin_port = htons(5000);
 
 	/* register signal handler */
